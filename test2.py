@@ -46,24 +46,3 @@ def record_data_every_60():
             # I might have to extend this and idk how im going to run this
             # throughout the weeks? maybe theres somewhere online I could run this?
 record_data_every_60()
-def graph_data_with_data8():
-    import matplotlib.pyplot as plt
-    import pandas as pd
-    df = pd.read_csv(r'C:\Users\James Bond\PycharmProjects\Web Scraper for RSF\Lib\site-packages\scraped_data.csv')
-    # Read the csv file into a pandas DataFrame
-
-    # Get the columns to use for x and y axis of the scatterplot
-    x_column = df.columns[0]
-    y_column = df.columns[1]
-
-    # Plot the scatterplot
-    plt.scatter(df[x_column], df[y_column])
-
-    # Label the x and y axis
-    plt.xlabel(x_column)
-    plt.ylabel(y_column)
-
-    # Show the plot
-    plt.show()
-
-#record_data_every_60()
