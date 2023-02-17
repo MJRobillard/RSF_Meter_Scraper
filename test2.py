@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 import time
 import numpy as np
+import datetime
 
 def Scrape():
     driver = webdriver.Chrome()
@@ -32,17 +33,14 @@ def Scrape():
 def record_data_every_60():
 
     # opens the scraped_data.csv and starts recording the data every minute nad records the time
-    with open('scraped_data.csv', 'w', newline='') as file:
+    with open('scraped_data2.csv', 'a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Timestamp", "Data"])
+        #writer.writerow(["Timestamp", "Data"])
 
-        while True:  # get recked Prof dinero, you said this was a stupid loop and youre right, but using time its practical
-            data = Scrape()  # gets the data from the scrape function
-            print(data)
-            current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())  # records system time, this part was weird
-            writer.writerow([current_time, data])  # when I enventually graph this, time is the x value
-            # and the data is the y value
-            time.sleep(60)  # loop every 60 seconds,
+        data = Scrape()  # gets the data from the scrape function
+        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # records system time, th# is part was weird
+        writer.writerow([current_time, data])  # when I enventually graph this, time is the x value
+        # and the data is the y value
             # I might have to extend this and idk how im going to run this
             # throughout the weeks? maybe theres somewhere online I could run this?
 record_data_every_60()
